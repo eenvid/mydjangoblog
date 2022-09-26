@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>لیست مقالات</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <div class="container">
-            <h1> لیست مقالات به صورت زیر اسن</h1>
-        {% for article in articles %}
+{% extends "base.html" %}
+
+{% block title %}
+    لیست مقالات
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h1> لیست مقالات به صورت زیر اسن</h1>
+    {% for article in articles %}
         <h2>
-            <a href="#">{{ article.title }}</a>
+            <a href="{% url 'articles:details' slug=article.slug %}">{{ article.title }}</a>
         </h2>
-            <p>{{ article.snippet }}</p>
-            <p>{{ article.date }}</p>
-        {% endfor %}
-    </div>
-</body>
-</html>
+        <p>{{ article.snippet }}</p>
+        <p>{{ article.date }}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
