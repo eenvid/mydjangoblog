@@ -19,7 +19,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-
+            pass
             return redirect("articles:list")
     else:
         form = AuthenticationForm()
