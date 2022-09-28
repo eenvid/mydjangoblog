@@ -3,7 +3,6 @@
 
 {%  block content %}
 <h1> sign Up</h1>
-
     <form class="site-form" action="{% url 'accounts:signup' %}" method="post">
         {{ form }}
         {% csrf_token %}
