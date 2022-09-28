@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<h2><a href="{% url 'articles:list' %}">LOGO</a></h2>
+ <header>
+     <h2><a href="{% url 'articles:list' %}">LOGO</a></h2>
 <nav>
     <ul>
         {% if user.is_authenticated %}
@@ -38,8 +39,12 @@
     </ul>
 </nav>
 
+ </header>
 
+
+<div class="wrapper">
 {% block content %}
 {% endblock %}
+</div>
 </body>
 </html>
