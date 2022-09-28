@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponse
-from . import models
+from django.shortcuts import render, HttpResponse, redirect
+from . import models, forms
 from django.contrib.auth.decorators import login_required
 import time
 
@@ -15,4 +15,10 @@ def articlesDetails(request, slug):
 
 @login_required(login_url= "/accounts/login")
 def create_article(request):
-    return render(request, 'articles/createArticle.html')
+    if request.method == 'POST':
+        form = forms.CreateArticle(request.POST, request.FILES)
+        if form.is_valid():
+            return redirect('articles:list')
+    else:
+        form = forms.CreateArticle()
+    return render(request, 'articles/createArticle.html', {'form':form})
